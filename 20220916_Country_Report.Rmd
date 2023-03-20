@@ -1,0 +1,565 @@
+---
+title: ""
+
+output:
+  word_document:
+    toc: true
+    fig_width: 10
+    fig_height: 6
+    fig_caption: yes
+    reference_docx: "Trade Report Template.docx"
+
+---       
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Executive Summary
+
+In this report, we have summarised India’s trade relations with `r country1` by looking at the products imported from and exported to it, as well as India’s dependence on its trade with `r country1`.
+
+India's total imports from `r country1` in 2021-22 were USD `r format(round(imcountrysum, 2), nsmall = 2)` Million.
+<br>
+India’s total exports to `r country1` in 2021-22 were USD `r format(round(excountrysum, 2), nsmall = 2)` Million.
+
+## Trade Snapshot
+
+India imports `r imlen8` commodities identified under `r imlenc` chapters across `r imlens` sectors from `r country1`.
+<br>
+India exports `r exlen8` commodities identified under `r exlenc` chapters across `r exlens` sectors from `r country1`.
+
+India's top trading sectors with `r country1` are 
+<br>
+```{r ces, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(ces) > 0) {formatnew(ces)}
+```
+<br>
+
+
+Further, India's top trade commodities have been further explored in the report. Going forward we take a deep dive into India's trade at the sectoral, chapter and commodity level.
+
+## Trade Trends 
+
+### Import
+India’s overall imports from `r country1` has changed `r format(round(imcountryg, 2), nsmall = 2)` % from 2020-21 to 2021-22.
+<br>
+We take a look at the change in imports from `r country1` in 2021-22 over imports in 2020-21
+<br>
+
+* Sectorwise Changes
+    + The `r importmsspos[1,2]` sector saw a `r importmsspos[1,5]`% increase in imports to `r importmsspos[1,3]` in 2021-22 from `r importmsspos[1,4]` in 2020-21
+    + `r ifelse(nrow(importmssneg)>0,
+paste(
+"The ",importmssneg[1,2]," sector saw a", abs(importmssneg[1,5])," % decrease in imports to",importmssneg[1,3]," in 2021-22 from ", importmssneg[1,4]," in 2020-21" ),
+paste(" The ",importmsspos[2,2]," sector saw a", abs(importmsspos[2,5])," % decrease in imports to", importmsspos[2,3]," in 2021-22 from ", importmsspos[2,4]," in 2020-21" ))` 
+    
+* Commodity wise Changes
+    + The commodity, `r importms8pos[1,6] `saw a `r importms8pos[1,5]`% increase in imports to `r importms8pos[1,3]` in 2021-22 from `r importms8pos[1,4]` in 2020-21
+    + `r ifelse(nrow(importms8neg)>0,
+paste( "The commodity",importms8neg[1,6],"saw a", abs(importms8neg[1,5])," % decrease in imports to",importms8neg[1,3]," in 2021-22 from ", importms8neg[1,4]," in 2020-21" ),
+paste(" The commodity",importms8pos[2,6],"saw a", abs(importms8pos[2,5])," % increase in imports to", importms8pos[2,3]," in 2021-22 from ", importms8pos[2,4]," in 2020-21" ))`
+
+
+<br>
+Further, India's import trend from `r country1` at sector and commodities have been further explored in the report. 
+
+### Export
+India’s overall exports to `r country1` has changed `r format(round(excountryg, 2), nsmall = 2)` % from 2020-21 to 2021-22.
+<br>
+
+We take a look at the change in exports from `r country1` in 2021-22 over exports in 2020-21
+<br>
+
+* Sectorwise Changes
+    + The `r exportmsspos[1,2]` sector saw a `r exportmsspos[1,5]`% increase in exports to `r exportmsspos[1,3]` in 2021-22 from `r exportmsspos[1,4]` in 2020-21
+    + `r ifelse(nrow(exportmssneg)>0,
+paste(
+"The ",exportmssneg[1,2]," sector saw a", abs(exportmssneg[1,5]),"% decrease in imports to",exportmssneg[1,3]," in 2021-22 from ", exportmssneg[1,4]," in 2020-21" ),
+paste(" The ",exportmsspos[2,2]," sector saw a", abs(exportmsspos[2,5])," % increase in imports to", exportmsspos[2,3]," in 2021-22 from ", exportmsspos[2,4]," in 2020-21" ))` 
+    
+* Commodity wise Changes
+    + The commodity, `r exportms8pos[1,6] ` saw a `r exportms8pos[1,5]`% increase in exports to `r exportms8pos[1,3]` in 2021-22 from `r exportms8pos[1,4]` in 2020-21
+    + `r ifelse(nrow(importmssneg)>0,
+paste(
+"The commodity ",exportms8neg[1,6]," saw a", abs(exportms8neg[1,5])," % decrease in imports to",exportms8neg[1,3]," in 2021-22 from ", exportms8neg[1,4]," in 2020-21" ),
+paste(" The commodity",exportms8pos[2,6]," saw a", abs(exportms8pos[2,5])," % increase in imports to", exportms8pos[2,3]," in 2021-22 from ", exportms8pos[2,4]," in 2020-21" ))`
+
+<br>
+
+Further, India's export trend to `r country1` at sector and commodities have been further explored in the report. 
+    
+## Trade Dependence
+
+Here we take a look at India's current dependence on `r country1` for its trade. ‘Dependence’ is defined as the fraction of trade that India does with said country compared to the total trade India does with the whole world. In this report, we take a look at these dependence at the sector, chapter and commodity level.
+
+### Import
+
+India imports `r format(round(imcountryd, 2), nsmall = 2)`% of its total imports from the world from `r country1`. The country is further dependent on `r country1` for imports in the following ways:
+<br>
+
+India is dependent on `r country1` for imports in the following ways:
+<br>
+
+* Sectors
+    + India imports `r imIndia202021cds[1,5]` percent of its total imports from the world in the `r imIndia202021cds[1,2]` sector from `r country1`
+    + India imports `r imIndia202021cds[2,5]` percent of its total imports from the world in the `r imIndia202021cds[2,2]` sector from `r country1`
+* Chapter (HS Code)
+    + India imports `r imIndia202021cd2[1,5]` percent of products categorized under the `r imIndia202021cd2[1,6]` (HS Code:`r imIndia202021cd2[1,2]`) chapter from `r country1`
+    + India imports `r imIndia202021cd2[2,5]` percent of products categorized under the `r imIndia202021cd2[2,6]` (HS Code:`r imIndia202021cd2[2,2]`) chapter from `r country1`
+* Commodity
+    + India imports `r imIndia202021cd8[1,5]` percent of its total imports of `r imIndia202021cd8[1,6] ` from `r country1`
+    + India imports `r imIndia202021cd8[2,5]` percent of its total imports of `r imIndia202021cd8[2,6] ` from `r country1`
+<br>
+
+Further, India's import dependence on `r country1` at sector, chapter and commodities have been further explored in the report. 
+
+### Export
+
+India exports `r format(round(excountryd, 2), nsmall = 2)`% of its total exports to the world to `r country1`. The country is further dependent on `r country1` for exports in the following ways:
+<br>
+
+* Sectors
+    + India exports `r exIndia202021cds[1,5]` percent of its total exports to the world in the `r exIndia202021cds[1,2]` sector to `r country1`
+    + India exports `r exIndia202021cds[2,5]` percent of its total exports to the world in the `r exIndia202021cds[2,2]` sector to `r country1`
+* Chapter (HS Code)
+    + India exports `r exIndia202021cd2[1,5]` percent of products categorized under the `r exIndia202021cd2[1,6]` (HS Code:`r exIndia202021cd2[1,2]`) chapter from `r country1`
+    + India exports `r exIndia202021cd2[2,5]` percent of products categorized under the `r exIndia202021cd2[2,6]` (HS Code:`r exIndia202021cd2[2,2]`) chapter from `r country1`
+* Commodity
+    + India exports `r exIndia202021cd8[1,5]` percent of its total exports of `r exIndia202021cd8[1,6] ` to `r country1`
+    + India exports `r exIndia202021cd8[2,5]` percent of its total exports of `r exIndia202021cd8[2,6] ` to `r country1`
+<br>
+
+Further, India's export dependence on `r country1` at sector, chapter and commodities have been further explored in the report. 
+
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+
+# Trade Snapshot
+
+This report summarises India’s trade relations with `r country1` focussing on products imported from `r country1` to India and exported from India to `r country1` It also throws light on the level of India’s economic dependence on the current state of trade relations with `r country1`
+
+## India's Top Imports from `r country1`
+
+The value of total imports from `r country1` to India in the year 2021-22 were  USD `r format(round(imcountrysum, 2), nsmall = 2)` million.Currently, India imports `r imlen8` commodities identified under `r imlenc` chapters across `r imlens` sectors from `r country1`.
+<br>
+
+### Sector-Wise
+<br>
+The 5 leading sectors under which goods are imported to India from `r country1` include the following. The complete list of sectors has been mentioned in Annexure 1.
+<br>
+```{r cs, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(cs) > 0) {formatnew(cs)}
+```
+<br>
+
+### Chapter-Wise
+<br>
+The 5 leading chapters (category of products) under which goods are imported to India from `r country1` include the following. The complete list of chapters has been mentioned in Annexure 2.
+<br>
+```{r c2, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(c2) > 0) {formatnew(c2)}
+```
+<br>
+
+### Commodity Wise 
+<br>
+The 10 leading commodities which are imported to India from `r country1` include the following:
+<br>
+```{r c8, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(c8) > 0) {formatnew(c8)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## India’s Top Exports to `r country1`
+<br>
+The value of total exports from India to `r country1` in the year 2021-22 amounted to USD `r format(round(excountrysum, 2), nsmall = 2)` million. India exports `r exlen8` commodities identified under `r exlenc` chapters across `r exlens` sectors from `r country1`. 
+<br>
+
+### Sector-Wise 
+<br>
+The 5 leading sectors under which goods are exported from India to `r country1` include the following. The complete list of sectors has been mentioned in Annexure 3.
+<br>
+```{r es, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(es) > 0) {formatnew(es)}
+```
+<br>
+
+### Chapter-Wise 
+<br>
+The 5 leading chapters (category of products) under which goods are exported from India to `r country1` include the following. The complete list of chapters has been mentioned in Annexure 4. 
+<br>
+```{r e2, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(e2) > 0) {formatnew(e2)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+### Commodity Wise 
+<br>
+The 10 leading commodities which are exported from India to `r country1` include the following:
+<br>
+```{r e8, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(e8) > 0) {formatnew(e8)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Trade Trends
+
+This section takes a brief look at the changing trends in trade over the two past years. 
+
+India’s overall imports from `r country1` has changed `r format(round(imcountryg, 2), nsmall = 2)` % from 2020-21 to 2021-22
+
+India’s overall exports to `r country1` has changed `r format(round(excountryg, 2), nsmall = 2)` % from 2020-21 to 2021-22.
+<br>
+
+## Import (Increase)
+
+### Sector-Wise 
+<br>
+India’s imports from `r country1` have majorly seen an increase under the following sectors. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.The complete list of sectors with their trade trend has been mentioned in Annexure 5.
+<br>
+
+```{r importmsspos, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importmsspos) > 0) {formatnew(importmsspos)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importmsspos) == 0) {cat(nosector)}
+```
+
+<br>
+
+### Commodity-Wise 
+<br>
+India’s imports from `r country1` have majorly seen an increase for the following commodities. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.
+<br>
+```{r importms8pos, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importms8pos) > 0) {formatnew(importms8pos)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importms8pos) == 0) {cat(nocom)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Import (Decrease)
+
+### Sector-Wise 
+<br>
+India’s imports from `r country1` have majorly seen a decrease under the following sectors. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.The complete list of sectors with their trade trend has been mentioned in Annexure 5.
+<br>
+```{r importmssneg, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importmssneg) > 0) {formatnew(importmssneg)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importmssneg) == 0) {cat(nosector)}
+```
+<br>
+
+### Commodity-Wise 
+<br>
+India’s imports from `r country1` have majorly seen a decrease for the following commodities. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.
+<br>
+```{r importms8neg, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(importms8neg) > 0) {formatnew(importms8neg)}
+```
+```{r , echo=FALSE, message=FALSE}
+if(nrow(importms8neg) == 0) {cat(nocom)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Export (Increase)
+
+### Sector-Wise 
+<br>
+India’s exports to `r country1` have majorly seen an increase under the following sectors. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.The complete list of sectors with their trade trend has been mentioned in Annexure 6.
+<br>
+```{r exportmsspos, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportmsspos) > 0) {formatnew(exportmsspos)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportmsspos) == 0) {cat(nosector)}
+```
+<br>
+
+### Commodity-Wise 
+<br>
+India’s exports to `r country1` have majorly seen an increase for the following commodities. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.
+<br>
+```{r exportms8pos, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportms8pos) > 0) {formatnew(exportms8pos)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportms8pos) == 0) {cat(nocom)}
+```
+
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Export (Decrease)
+
+### Sector-Wise 
+<br>
+India’s exports to `r country1` have majorly seen a decrease under the following sectors. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.The complete list of sectors with their trade trend has been mentioned in Annexure 6.
+<br>
+```{r exportmssneg, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportmssneg) > 0) {formatnew(exportmssneg)}
+```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportmssneg) == 0) {cat(nosector)}
+```
+
+<br>
+
+### Commodity-Wise 
+<br>
+India’s imports from `r country1` have majorly seen a decrease for the following commodities. The Percentage Change (%) given in the table represents the change in imports from 2020-21 to 2021-22.
+<br>
+```{r exportms8neg, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exportms8neg) > 0) {formatnew(exportms8neg)}
+```
+```{r , echo=FALSE, message=FALSE}
+if(nrow(exportms8neg) == 0) {cat(nocom)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+
+# Trade Dependence
+
+In this section we take a look at India's current dependence on `r country1` for its trade. ‘Dependence’ is defined as the fraction of trade that India does with said country compared to the total trade India does with the whole world. In this report, we take a look at these dependence at the sector, chapter and commodity level.
+
+## Imports
+
+We define dependence as importing more than a certain percentage of India’s total imports to a single country.
+
+### Sector-Wise 
+<br>
+India’s dependence on imports from `r country1`, is maximally under the following sectors. The Dependence Percentage given in the following table indicates the level of dependence. <br>
+
+The table lists Top sectors with import dependence on `r country1`. The complete list of sectors with their trade dependence has been mentioned in Annexure 7.
+<br>
+```{r imIndia202021cds, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imIndia202021cds) > 0) {formatnew(imIndia202021cds)}
+```
+<br>
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+### Chapter-Wise 
+<br>
+India’s dependence on imports from `r country1`, is maximally under the following chapters. The Dependence Percentage given in the following table indicates the level of dependence.
+<br>
+
+The table lists the Top HS Code chapters with import dependence on `r country1`. The complete list of chapters with their trade dependence has been mentioned in Annexure 8.
+<br>
+```{r imIndia202021cd2, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imIndia202021cd2) > 0) {formatnew(imIndia202021cd2)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+### Commodity Wise 
+<br>
+India’s dependence on imports from `r country1`, is maximally for the following commodities. The Dependence Percentage given in the following table indicates the level of dependence.The table lists commodities with import dependence on `r country1`.
+<br>
+
+```{r imIndia202021cd8, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imIndia202021cd8) > 0) {formatnew(imIndia202021cd8)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+
+## Exports
+
+We define dependence as exporting more than a certain percentage of India’s total exports to a single country.
+
+### Sector-Wise 
+<br>
+India’s dependence on exports to `r country1`, is maximally under the following sectors. The Dependence Percentage given in the following table indicates the level of dependence.
+<br>
+
+The table lists sectors with export dependence on `r country1`.The complete list of sectors with their trade dependence has been mentioned in Annexure 9.
+<br>
+```{r exIndia202021cds, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exIndia202021cds) > 0) {formatnew(exIndia202021cds)}
+```
+<br>
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+### Chapter-Wise 
+<br>
+India’s dependence on exports to `r country1`, is maximally under the following chapters. The Dependence Percentage given in the following table indicates the level of dependence.
+<br>
+
+The table lists HS Code chapters with export dependence on `r country1`.The complete list of chapters with their trade dependence has been mentioned in Annexure 10.
+<br>
+```{r exIndia202021cd2, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exIndia202021cd2) > 0) {formatnew(exIndia202021cd2)}
+```
+
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+### Commodity Wise 
+<br>
+India’s dependence on exports to `r country1`, is maximally for the following commodities. The Dependence Percentage given in the following table indicates the level of dependence.The table lists commodities with export dependence on `r country1`.
+<br>
+```{r exIndia202021cd8, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exIndia202021cd8) > 0) {formatnew(exIndia202021cd8)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+# Annexures
+
+## Annexure 1: Sectorwise Imports
+
+```{r imtsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imtsannexure) > 0) {formatnew(imtsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 2: Chapterwise Imports
+
+<br>
+```{r imtcannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imtcannexure) > 0) {formatnew(imtcannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 3: Sectorwise Exports
+
+<br>
+```{r extsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(extsannexure) > 0) {formatnew(extsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 4: Chapterwise Exports
+
+<br>
+```{r extcannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(extcannexure) > 0) {formatnew(extcannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 5: Sectorwise Import Change
+
+<br>
+```{r immsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(immsannexure) > 0) {formatnew(immsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 6: Sectorwise Export Change
+
+<br>
+```{r exmsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exmsannexure) > 0) {formatnew(exmsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+
+## Annexure 7: Sectorwise Import Dependence
+
+<br>
+```{r imdsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imdsannexure) > 0) {formatnew(imdsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 8: Chapterwise Import Dependence
+
+<br>
+```{r imdcannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(imdcannexure) > 0) {formatnew(imdcannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 9: Sectorwise Export Dependence
+
+<br>
+```{r exdsannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exdsannexure) > 0) {formatnew(exdsannexure)}
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Annexure 10: Chapterwise Export Dependence
+
+<br>
+```{r exdcannexure, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+if(nrow(exdcannexure) > 0) {formatnew(exdcannexure)}
+```
